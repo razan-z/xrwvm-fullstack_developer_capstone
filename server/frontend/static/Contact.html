@@ -1,0 +1,93 @@
+<html>
+<head>
+  <!-- Link the style sheet here -->
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+</head>
+<div>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
+    <div class="container-fluid">
+      <h2 style="padding-right: 5%;">Dealerships</h2>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" style="font-size: larger;" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="font-size: larger;" href="/about">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" style="font-size: larger;" href="/contact">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    <!-- Contact information content-->
+    <div class="contact-container">
+        <div class="contact-header">
+            <h1>Contact Best Cars Dealership</h1>
+            <p>We're here to help you find your perfect vehicle. Get in touch with us today!</p>
+        </div>
+        
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Visit Our Dealership</h3>
+                    <p>123 Auto Avenue<br>Motor City, MC 12345</p>
+                    <p class="hours">Open Monday-Saturday: 9am-8pm<br>Sunday: 11am-6pm</p>
+                </div>
+                
+                <div class="contact-card">
+                    <h3><i class="fas fa-phone"></i> Call Us</h3>
+                    <p>Sales: (555) 123-4567<br>Service: (555) 123-4568<br>Finance: (555) 123-4569</p>
+                    <p class="emergency">24/7 Roadside Assistance: (555) 123-HELP</p>
+                </div>
+                
+                <div class="contact-card">
+                    <h3><i class="fas fa-envelope"></i> Email Us</h3>
+                    <p>General Inquiries: info@bestcars.com<br>Sales: sales@bestcars.com<br>Service: service@bestcars.com</p>
+                    <p class="response">We respond within 24 hours</p>
+                </div>
+                </div>
+                
+                <div class="contact-form">
+                <h3>Send Us a Message</h3>
+                <form>
+                    <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" name="subject">
+                        <option value="sales">Vehicle Sales</option>
+                        <option value="service">Service & Maintenance</option>
+                        <option value="finance">Financing</option>
+                        <option value="general">General Inquiry</option>
+                    </select>
+                    </div>
+                    <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>
