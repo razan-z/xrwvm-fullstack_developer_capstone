@@ -17,6 +17,8 @@ from .populate import initiate
 
 from .models import CarMake, CarModel
 
+from .restapis import get_request, analyze_review_sentiments, post_review
+
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
@@ -101,14 +103,24 @@ def get_dealerships(request, state="All"):
 
 
 def get_dealer_reviews(request, dealer_id):
-    # if dealer id has been provided
-    if(dealer_id):
+    if dealer_id:
         endpoint = "/fetchReviews/dealer/"+str(dealer_id)
         reviews = get_request(endpoint)
+        
+        # Check if reviews were fetched successfully
+        if reviews is None:
+            return JsonResponse({"status": 500, "message": "Error fetching reviews"})
+            
         for review_detail in reviews:
             response = analyze_review_sentiments(review_detail['review'])
-            print(response)
-            review_detail['sentiment'] = response['sentiment']
+            print(f"Sentiment response: {response}")
+            
+            # Safe access to sentiment with fallback
+            if response and 'sentiment' in response:
+                review_detail['sentiment'] = response['sentiment']
+            else:
+                review_detail['sentiment'] = 'neutral'  # Default fallback
+                
         return JsonResponse({"status":200,"reviews":reviews})
     else:
         return JsonResponse({"status":400,"message":"Bad Request"})

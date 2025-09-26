@@ -30,14 +30,29 @@ def get_request(endpoint, **kwargs):
         print("Network exception occurred")
 
 def analyze_review_sentiments(text):
-    request_url = sentiment_analyzer_url+"analyze/"+text
+    # Clean the URL to remove any trailing slashes
+    base_url = sentiment_analyzer_url.rstrip('/')
+    
+    # Properly encode the text for URL
+    import urllib.parse
+    encoded_text = urllib.parse.quote(text)
+    
+    # Construct the URL with proper slashes
+    request_url = f"{base_url}/analyze/{encoded_text}"
+    
+    print(f"Analyzing sentiment: {request_url}")
+    
     try:
-        # Call get method of requests library with URL and parameters
-        response = requests.get(request_url)
-        return response.json()
+        response = requests.get(request_url, timeout=10)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            print(f"Error: HTTP {response.status_code}")
+            return {"sentiment": "neutral", "score": 0.0}
     except Exception as err:
-        print(f"Unexpected {err=}, {type(err)=}")
-        print("Network exception occurred")
+        print(f"Sentiment analysis error: {err}")
+        # Return a default sentiment instead of None
+        return {"sentiment": "neutral", "score": 0.0}
 
 # def post_review(data_dict):
 def post_review(data_dict):
